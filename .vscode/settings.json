@@ -1,4 +1,11 @@
 {
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
+    "spellright.language": [
+        "hu"
+    ],
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext"
+    ],
 }

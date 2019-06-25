@@ -119,7 +119,7 @@
         </div>
       </section>
       <!-- Legnépszerűbb -->
-      <section class="legnepszerubb">
+      <section class="legnepszerubb" id="legnepszerubb">
         <h2>Legnépszerűbb étel az étlapunkról a szavazatok szerint:</h2>
         <p> {{ legnepszerubbEtel.join(" és a(z) ") }}</p>
       </section>
@@ -129,12 +129,12 @@
         <h2>Szavazzon a legnepszerűbb ételünkre</h2>
         <form>
           <div class="form-group">
-            <label for="foodInput">Új étel felvétele:</label>
+            <label for="foodInput">Új étel felvétele szavazással:</label>
             <b-input v-model="food.nev" id="foodInput"></b-input>
           </div>
-          <button type="button" class="btn btn-secondary" @click="addNewFood()">Új étel felvétele</button>
+          <button type="button" class="btn btn-secondary" @click="addNewFood()">Felvesz + szavaz</button>
         </form>
-        <h2>Szavazás:</h2>
+        <h2>Szavazás állása:</h2>
         <div>
           <b-table
             id="foodsTable"
@@ -232,11 +232,7 @@ interface IFood {
   szavazatDb: number;
 }
 
-@Component({
-  firestore: {
-    vk: db.collection("vendegkonyv")
-  }
-})
+@Component
 export default class Index extends Vue {
   private currentPage: number = 1;
   private currentPageFoods: number = 1;
@@ -329,6 +325,7 @@ export default class Index extends Vue {
             docRef.id
           }\nKöszönöm a válaszát!`
         );
+        this.newEntry.bejegyzes = "";
         this.getAllEntries();
       })
       .catch(error => {
@@ -352,6 +349,7 @@ export default class Index extends Vue {
             docRef.id
           }\nKöszönöm a szavazatát!`
         );
+        this.food.nev = "";
         this.getAllFoods();
       })
       .catch(error => {
