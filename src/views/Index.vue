@@ -429,7 +429,7 @@ h1 {
 h2 {
   padding-top: 10px;
   font-weight: 300;
-  margin-top:30px; 
+  margin-top:30px; /* Így az ugrópontok nem kerülnek a nav-bar alá */
 }
 
 section {
