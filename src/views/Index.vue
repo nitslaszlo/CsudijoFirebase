@@ -1,7 +1,24 @@
 <template>
   <div>
-    <!-- Navigáció -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+    <!-- Navigáció new -->
+    <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
+      <b-navbar-brand href="#fejlec">Csudijo</b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="#rolunk">Rólunk</b-nav-item>
+          <b-nav-item href="#etlap">Étlap</b-nav-item>
+          <b-nav-item href="#legnepszerubb">Legnépszerűbb</b-nav-item>
+          <b-nav-item href="#vendegkonyv">Vendégkönyv</b-nav-item>
+          <b-nav-item href="#kapcsolat">Kapcsolat</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+
+    <!-- Navigáció régi: -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
       <div class="container">
         <button
           class="navbar-toggler"
@@ -34,7 +51,7 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav>-->
 
     <!-- Fejléc -->
     <header id="fejlec">
@@ -121,7 +138,7 @@
       <!-- Legnépszerűbb -->
       <section class="legnepszerubb" id="legnepszerubb">
         <h2>Legnépszerűbb étel az étlapunkról a szavazatok szerint:</h2>
-        <p> {{ legnepszerubbEtel.join(" és a(z) ") }}</p>
+        <p>{{ legnepszerubbEtel.join(" és a(z) ") }}</p>
       </section>
 
       <!-- Szavazás -->
@@ -144,7 +161,7 @@
             :per-page="perPage"
             :current-page="currentPageFoods"
           >
-          <b-button
+            <b-button
               slot="szavazas"
               slot-scope="row"
               variant="info"
@@ -376,7 +393,8 @@ export default class Index extends Vue {
     const obj = {} as any;
     obj.nev = item.nev;
     obj.szavazatDb = ujSzavazatDb;
-    db.collection("szavazas").doc(item.id)
+    db.collection("szavazas")
+      .doc(item.id)
       .update(obj)
       .then(() => {
         console.log("Update succes!");
@@ -411,6 +429,7 @@ h1 {
 h2 {
   padding-top: 10px;
   font-weight: 300;
+  margin-top:30px; 
 }
 
 section {
