@@ -1,6 +1,6 @@
 <template>
   <div class="admin">
-    <h1>Admin</h1>
+    <h1>Ez itt az admin oldal helye</h1>
   </div>
 </template>
 
