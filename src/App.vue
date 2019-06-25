@@ -1,11 +1,13 @@
 <template>
   <div>
-        <router-view/>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script  lang="ts">
-import { Component, Vue} from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class App extends Vue {}
 </script>
