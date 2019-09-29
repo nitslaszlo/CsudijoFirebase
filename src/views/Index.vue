@@ -77,7 +77,7 @@
           Csudijó napot varázsolhassunk!
         </p>
 
-        <img src="./kepek/csicseri.jpg" alt="Csicseri patak" title="Csicseri patak">
+        <img src="./kepek/csicseri.jpg" alt="Csicseri patak" title="Csicseri patak" />
       </section>
 
       <!-- Étlap -->
@@ -87,7 +87,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <div class="card">
-              <img class="card-img-top" src="./kepek/etlap1.jpg" alt>
+              <img class="card-img-top" src="./kepek/etlap1.jpg" alt />
               <div class="card-body">
                 <h4 class="card-title">TEJSZÍNES-MUSTÁROS CSIRKE ALMÁVAL</h4>
                 <p class="card-text">
@@ -99,7 +99,7 @@
           </div>
           <div class="col-sm-12 col-md-6">
             <div class="card">
-              <img class="card-img-top" src="./kepek/etlap2.jpg" alt>
+              <img class="card-img-top" src="./kepek/etlap2.jpg" alt />
               <div class="card-body">
                 <h4 class="card-title">LECSÓ KOLBÁSZCSIPSSZEL</h4>
                 <p class="card-text">
@@ -111,7 +111,7 @@
           </div>
           <div class="col-sm-12 col-md-6">
             <div class="card">
-              <img class="card-img-top" src="./kepek/etlap3.jpg" alt>
+              <img class="card-img-top" src="./kepek/etlap3.jpg" alt />
               <div class="card-body">
                 <h4 class="card-title">BÖGRÉBEN SÜLT PARADICSOMOS TÉSZTA</h4>
                 <p class="card-text">
@@ -123,7 +123,7 @@
           </div>
           <div class="col-sm-12 col-md-6">
             <div class="card">
-              <img class="card-img-top" src="./kepek/etlap4.jpg" alt>
+              <img class="card-img-top" src="./kepek/etlap4.jpg" alt />
               <div class="card-body">
                 <h4 class="card-title">TORTELLINIS PARADICSOMLEVES</h4>
                 <p class="card-text">
@@ -156,18 +156,15 @@
           <b-table
             id="foodsTable"
             striped
+            caption-top
             :items="foods"
             :fields="foodFields"
             :per-page="perPage"
             :current-page="currentPageFoods"
           >
-            <b-button
-              slot="szavazas"
-              slot-scope="row"
-              variant="info"
-              size="sm"
-              @click="newVote(row.item)"
-            >Szavaz</b-button>
+            <template v-slot:cell(szavazas)="row">
+              <b-button size="sm" @click="newVote(row.item)" class="mr-2" variant="info">Szavaz</b-button>
+            </template>
           </b-table>
           <b-pagination
             v-model="currentPageFoods"
@@ -200,13 +197,9 @@
             :per-page="perPage"
             :current-page="currentPage"
           >
-            <b-button
-              slot="torles"
-              slot-scope="row"
-              variant="danger"
-              size="sm"
-              @click="deleteEntry(row.item)"
-            >Töröl</b-button>
+            <template v-slot:cell(torles)="row">
+              <b-button size="sm" @click="deleteEntry(row.item)" class="mr-2" variant="danger">Töröl</b-button>
+            </template>
           </b-table>
           <b-pagination
             v-model="currentPage"
@@ -224,10 +217,10 @@
       <div class="text-center">
         <small>
           Csudijó Étterem
-          <br>9999 Karakumszörcsög
-          <br>Macskakapocs utca 29.
-          <br>Telefon: +36 55 555-5555
-          <br>Email:
+          <br />9999 Karakumszörcsög
+          <br />Macskakapocs utca 29.
+          <br />Telefon: +36 55 555-5555
+          <br />Email:
           <a href="mailto:kapcsolat@csudijo-etterem.hu">kapcsolat@csudijo-etterem.hu</a>
         </small>
       </div>
@@ -338,9 +331,7 @@ export default class Index extends Vue {
       .add(obj)
       .then(docRef => {
         alert(
-          `Adatok mentése sikeres!\nRekord azonosítója: ${
-            docRef.id
-          }\nKöszönöm a válaszát!`
+          `Adatok mentése sikeres!\nRekord azonosítója: ${docRef.id}\nKöszönöm a válaszát!`
         );
         this.newEntry.bejegyzes = "";
         this.getAllEntries();
@@ -362,9 +353,7 @@ export default class Index extends Vue {
       .add(obj)
       .then(docRef => {
         alert(
-          `Adatok mentése sikeres!\nRekord azonosítója: ${
-            docRef.id
-          }\nKöszönöm a szavazatát!`
+          `Adatok mentése sikeres!\nRekord azonosítója: ${docRef.id}\nKöszönöm a szavazatát!`
         );
         this.food.nev = "";
         this.getAllFoods();
@@ -429,7 +418,7 @@ h1 {
 h2 {
   padding-top: 10px;
   font-weight: 300;
-  margin-top:30px; /* Így az ugrópontok nem kerülnek a nav-bar alá */
+  margin-top: 30px; /* Így az ugrópontok nem kerülnek a nav-bar alá */
 }
 
 section {
