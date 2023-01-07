@@ -19,7 +19,7 @@
   "devDependencies": {
     "@mdi/font": "^4.4.95",
     "@vue/cli-plugin-typescript": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli-service": "^5.0.8",
     "bootstrap": "^4.3.1",
     "mutationobserver-shim": "^0.3.3",
     "node-sass": "^4.12.0",
